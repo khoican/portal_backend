@@ -10,7 +10,19 @@ const postPortalIn = (body) => {
     return dbPool.execute(SQLQuery);
 }
 
+const updatePortalIn = (body, id) => {
+    const SQLQuery = `UPDATE portal_masuk SET nama="${body.nama}", kompi="${body.kompi}" WHERE id="${id}";`;
+    return dbPool.execute(SQLQuery);
+}
+
+const deletePortalIn = (body, id) => {
+    const SQLQuery = `DELETE FROM portal_masuk WHERE id="${id}";`;
+    return dbPool.execute(SQLQuery);
+}
+
 module.exports = {
     getAllPortalIn,
-    postPortalIn
+    postPortalIn,
+    updatePortalIn,
+    deletePortalIn
 }

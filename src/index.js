@@ -7,7 +7,8 @@ const router = require('./routes/api')
 
 app.use(midellwareGetRequest);
 app.use(express.json());
-app.use(router);
+
+app.use('/in', router);
 
 const port = process.env.PORT || 4000;
  app.listen(port, () => {

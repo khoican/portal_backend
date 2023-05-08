@@ -15,7 +15,7 @@ const updatePortalIn = (body, id) => {
     return dbPool.execute(SQLQuery);
 }
 
-const deletePortalIn = (body, id) => {
+const deletePortalIn = (id) => {
     const SQLQuery = `DELETE FROM portal_masuk WHERE id="${id}";`;
     return dbPool.execute(SQLQuery);
 }

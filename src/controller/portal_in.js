@@ -62,8 +62,26 @@ const updatePortal_in = async (req, res) => {
     }
 }
 
+const deletePortal_in = async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        await ModelPortalIn.deletePortalIn(id);
+        res.json({
+            message: "DELETE Data Success",
+            data: null
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Server Error",
+            serverMessage: error
+        })
+    }
+}
+
 module.exports = {
     getPortal_in,
     postPortal_in,
-    updatePortal_in
+    updatePortal_in,
+    deletePortal_in
 }

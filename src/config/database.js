@@ -7,4 +7,4 @@ const dbPool = mysql.createPool({
     database: 'portal_otomatis_dev'
 });
 
-module.exports = dbPool;
+module.exports = dbPool.promise();

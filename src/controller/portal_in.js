@@ -1,6 +1,6 @@
-const getPortal_in = (res, req) => {
+const getPortal_in = (req, res) => {
      res.json({
-        message: "GET Success"
+        message: "GET Success",
      });
 }
 

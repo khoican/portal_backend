@@ -1,7 +1,7 @@
-const ModelPortalIn = require('./../models/portal_in');
+const ModelPortalOut = require('./../models/portal_out');
 
-const getPortal_in = async (req, res) => {
-    const [data] = await ModelPortalIn.getAllPortalIn();
+const getPortal_out = async (req, res) => {
+    const [data] = await ModelPortalOut.getAllPortalOut();
 
     try {
          res.json({
@@ -17,24 +17,7 @@ const getPortal_in = async (req, res) => {
     }
 }
 
-const getDatePortal_in = async (req, res) => {
-    const {body} = req;
-    
-    try {
-        const [data] = await ModelPortalIn.getDatePortalIn(body);
-        res.json({
-            message: 'Filter By Date Success',
-            body: {body, data}
-        })
-    } catch (error) {
-        res.status(500).json({
-            message: 'Server Error',
-            serverMessage: error
-        });
-    }
-}
-
-const postPortal_in = async (req, res) => {
+const postPortal_out = async (req, res) => {
     const {body} = req;
     
     if(!body.nama || !body.kompi) {
@@ -45,7 +28,7 @@ const postPortal_in = async (req, res) => {
     }
 
     try {
-        await ModelPortalIn.postPortalIn(body);
+        await ModelPortalOut.postPortalOut(body);
         res.status(201).json({
             message: "Insert Data Success",
             data: body,
@@ -58,12 +41,12 @@ const postPortal_in = async (req, res) => {
     }
 }
 
-const updatePortal_in = async (req, res) => {
+const updatePortal_out = async (req, res) => {
     const {id} = req.params;
     const {body} = req;
 
     try {
-        await ModelPortalIn.updatePortalIn(body, id);
+        await ModelPortalOut.updatePortalOut(body, id);
         res.json({
             message: "UPDATE Data Success",
             data: {
@@ -79,11 +62,11 @@ const updatePortal_in = async (req, res) => {
     }
 }
 
-const deletePortal_in = async (req, res) => {
+const deletePortal_out = async (req, res) => {
     const {id} = req.params;
 
     try {
-        await ModelPortalIn.deletePortalIn(id);
+        await ModelPortalOut.deletePortalOut(id);
         res.json({
             message: "DELETE Data Success",
             data: null
@@ -97,9 +80,8 @@ const deletePortal_in = async (req, res) => {
 }
 
 module.exports = {
-    getPortal_in,
-    getDatePortal_in,
-    postPortal_in,
-    updatePortal_in,
-    deletePortal_in
+    getPortal_out,
+    postPortal_out,
+    updatePortal_out,
+    deletePortal_out
 }

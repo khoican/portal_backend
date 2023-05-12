@@ -1,7 +1,12 @@
 const dbPool = require('./../config/database');
 
 const getAllPortalIn = () => {
-    const SQLQuery = 'SELECT * FROM portal_masuk;';
+    const SQLQuery = 'SELECT * FROM portal_masuk ORDER BY waktu DESC;';
+    return dbPool.execute(SQLQuery);
+}
+
+const getDatePortalIn = (body) => {
+    const SQLQuery = `SELECT * FROM portal_masuk WHERE date(waktu) BETWEEN '${body.waktuThen}' AND '${body.waktuNow}';`;
     return dbPool.execute(SQLQuery);
 }
 
@@ -22,6 +27,7 @@ const deletePortalIn = (id) => {
 
 module.exports = {
     getAllPortalIn,
+    getDatePortalIn,
     postPortalIn,
     updatePortalIn,
     deletePortalIn
